@@ -640,45 +640,4 @@
 			}
 		};
 	}());
-
-	if(typeof Ajax != 'undefined'){
-		Ajax.postJson = function(url, data, callback, options){
-			options = options || {};
-			if(options.tips){
-				MWIN.tips(options.tips);
-			}
-			Ajax({
-				url : url,
-				data : data,
-				method : 'POST',
-				dataType : 'json',
-				opts : options,
-				complete : options.complete || function(){
-					if(options.tips){
-						MWIN.close('tips');
-					}
-				},
-				error : options.error || function(){
-					if(this.opts.errorAutoClose){
-						MWIN.tips(this.opts.errorMessage || '请求失败，系统异常。', this.opts.errorAutoClose);
-					}else{
-						MWIN.alert(this.opts.errorMessage || '请求失败，系统异常。');
-					}
-				},
-				succeed : function(result){
-					if(!result.error){
-						if(typeof callback == 'function'){
-							callback(result.data);
-						}
-					}else{
-						if(this.opts.errorAutoClose){
-							MWIN.tips(result.message, this.opts.errorAutoClose);
-						}else{
-							MWIN.alert(result.message);
-						}
-					}
-				}
-			});
-		};
-	}
 }(window));
