@@ -1,0 +1,23 @@
+{
+  "name": "jazor-dialog",
+  "version": "1.0.0",
+  "description": "dialog for web",
+  "main": "dialog.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cook-code-jazor/dialog.git"
+  },
+  "keywords": [
+    "dialog",
+    "javascript"
+  ],
+  "author": "anlige",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cook-code-jazor/dialog/issues"
+  },
+  "homepage": "https://github.com/cook-code-jazor/dialog#readme"
+}

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>DIALOG</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link href="dialog.ny.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="dialog.js"></script>
+		<script type="text/javascript">
+			MWIN.options('replaceAlert', true);
+			MWIN.options('titleAlign', 'left');
+			MWIN.options('buttonAlign', 'right');
+			MWIN.options('bodyAlign', 'left');
+			var test = null;
+			function Alert(){
+				alert("订单成功提交！"); 
+			}
+			function Confirm(){
+				MWIN.confirm("确定要删除？<br />sdfsadfsdaf<br />sdfsadfsd<br />sdfsadfsd<br />sdfsadfsd", function(){
+					alert('订单已删除！',{
+						icon : 'ok'
+					});
+				}, false,{
+					icon : 'question'
+				});
+			}
+			function Tips(){
+				MWIN.tips("状态错误！", 2000,{
+					title:null,
+					icon : 'unhappy'
+				});
+			}
+			function close1(){
+				test.close();
+			}
+			function Dialog(){
+				test = MWIN.open("自定义的模式对话框。",{
+					title : "对话框标题",
+					buttons : [
+						{
+							title : "第1个按钮",
+							callback : function(){
+								alert('点击了第1个按钮，但不会关闭对话框！');
+								return false;
+							},
+							className : "btn-warning",
+							isDefault : true
+						},
+						{
+							title : "确定购买",
+							callback : function(){
+								alert('购买成功！');
+							}
+						},
+						{
+							title : "取消",
+							className : "btn-light",
+							isCancel : true
+						}
+					]
+				});
+			}
+			function DialogClass(){
+				MWIN.open("带按钮类的对话框。",{
+					buttons : {
+						"修改订单.btn-warning" : function(){
+							alert('订单已修改！');
+							return false;
+						},
+						"支付订单" : function(){
+							alert('订单支付成功！');
+						},
+						"关闭窗口.btn-light" : function(){}
+					}
+				});
+			}
+			function Prompt(){
+				MWIN.prompt('请输入密码', function(value){
+					alert(value);
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div class="wapper">
+			<h2>DIALOG</h2>
+			<button onclick="Alert();">警告框</button>
+			<button onclick="Confirm();">信息确认对话框</button>
+			<button onclick="Tips();">提示框</button>
+			<button onclick="Dialog();">自定义对话框</button>
+			<button onclick="DialogClass();">带按钮类的对话框</button>
+			<button onclick="if(test) test = test.open();">重复打开</button>
+			<button onclick="Prompt();">Prompt</button>
+		</div>
+	</body>
+</html>
